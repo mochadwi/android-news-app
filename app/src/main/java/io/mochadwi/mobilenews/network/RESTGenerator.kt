@@ -1,6 +1,5 @@
 package io.mochadwi.mobilenews.network
 
-import com.google.gson.GsonBuilder
 import io.mochadwi.mobilenews.BuildConfig
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -36,12 +35,12 @@ class RESTGenerator {
             okHttpClient.addInterceptor(logging)
 
             return Retrofit.Builder()
-            .addConverterFactory(ScalarsConverterFactory.create())
-            .addConverterFactory(GsonConverterFactory.create())
-            .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-            .baseUrl(url)
-            .client(okHttpClient.build())
-            .build()
+                    .addConverterFactory(ScalarsConverterFactory.create())
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                    .baseUrl(url)
+                    .client(okHttpClient.build())
+                    .build()
         }
 
     }

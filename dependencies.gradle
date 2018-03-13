@@ -7,7 +7,7 @@ ext {
     retrofitVersion = '2.0.2'
     daggerVersion = '2.5'
     glideVersion = '3.7.0'
-    rxJavaVersion = '2.x.y'
+    rxJavaVersion = '2.0.2'
     rxAndroidVersion = '2.0.2'
     mockitoVersion = '2.+'
     butterKnifeVersion = '8.8.1'
@@ -31,8 +31,8 @@ ext {
             retrofitRx              : "com.squareup.retrofit2:adapter-rxjava:${retrofitVersion}",
             retrofitGson            : "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
             retrofitScalar          : "com.squareup.retrofit2:converter-scalars:${retrofitVersion}",
-            rxAndroid               : "io.reactivex:rxandroid:${rxAndroidVersion}",
-            rxJava                  : "io.reactivex:rxjava:${rxJavaVersion}",
+            rxAndroid               : "io.reactivex.rxjava2:rxandroid:${rxAndroidVersion}",
+            rxJava                  : "io.reactivex.rxjava2:rxjava:${rxJavaVersion}",
             dagger                  : "com.google.dagger:dagger:${daggerVersion}",
             daggerCompiler          : "com.google.dagger:dagger-compiler:${daggerVersion}",
             javaxAnnotation         : "javax.annotation:jsr250-api:1.0",

@@ -1,6 +1,7 @@
 package io.mochadwi.mobilenews.network
 
 import io.mochadwi.mobilenews.model.news_source.NewsSourceModel
+import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
 import rx.Observable
@@ -11,5 +12,5 @@ import rx.Observable
 interface RESTClient {
 
     @GET("sources")
-    fun getRecommendedSources(@Query("apiKey") action: String): Observable<NewsSourceModel>
+    fun getRecommendedSources(@Query("apiKey") action: String): Call<NewsSourceModel>
 }
