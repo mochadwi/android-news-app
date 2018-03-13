@@ -6,6 +6,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -68,7 +69,6 @@ public class NewsSourceFragment extends Fragment implements NewsSourceContract.V
         super.onActivityCreated(savedInstanceState);
 
         mPresenter.getNews(BuildConfig.APIKEY);
-        mAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -77,7 +77,7 @@ public class NewsSourceFragment extends Fragment implements NewsSourceContract.V
         mTxtItems.setVisibility(View.GONE);
         mRvItems.setVisibility(View.VISIBLE);
 
-        mRvItems.setLayoutManager(new LinearLayoutManager(getContext()));
+        mRvItems.setLayoutManager(new GridLayoutManager(getContext(), 2));
         mAdapter = new NewsSourceAdapter(getContext(), data);
         mRvItems.setAdapter(mAdapter);
     }

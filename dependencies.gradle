@@ -11,6 +11,7 @@ ext {
     rxAndroidVersion = '2.0.2'
     mockitoVersion = '2.+'
     butterKnifeVersion = '8.8.1'
+    readMoreVersion = '2.1.0'
 
     supportDependencies = [
             appCompat       : "com.android.support:appcompat-v7:${supportLibraryVersion}",
@@ -37,6 +38,7 @@ ext {
             daggerCompiler          : "com.google.dagger:dagger-compiler:${daggerVersion}",
             javaxAnnotation         : "javax.annotation:jsr250-api:1.0",
             glassfishJavaxAnnotation: "org.glassfish:javax.annotation:10.0-b28",
+            readMore                : "com.borjabravo:readmoretextview:${readMoreVersion}"
     ]
 
     testLibraries = [

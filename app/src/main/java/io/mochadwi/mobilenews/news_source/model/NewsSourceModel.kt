@@ -1,4 +1,4 @@
-package io.mochadwi.mobilenews.model.news_source
+package io.mochadwi.mobilenews.news_source.model
 
 import javax.annotation.Generated
 import com.google.gson.annotations.SerializedName
