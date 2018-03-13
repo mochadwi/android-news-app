@@ -13,6 +13,11 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "APIKEY", "e3b3c77a93224a3cb38e1c87cc6aad55"
+        buildConfigField "int", "LIMIT", "100"
+        buildConfigField "String", "BASEURL", "\"https://newsapi.org/v2/\""
+        buildConfigField "int", "CACHETIME", "432000" // 5days
     }
     buildTypes {
         release {
@@ -51,6 +56,10 @@ dependencies {
 
     //imageLoader
     implementation libraries.glide
+
+    //binding
+    implementation libraries.butterKnife
+    annotationProcessor libraries.butterKnifeAnnotation
 
     //Reactive
     implementation libraries.rxAndroid

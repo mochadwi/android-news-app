@@ -4,7 +4,10 @@ import io.mochadwi.mobilenews.BasePresenter
 import io.mochadwi.mobilenews.BaseView
 
 interface NewsSourceContract {
-    interface View : BaseView<Presenter>
+    interface View : BaseView<Presenter> {
+    }
 
-    interface Presenter : BasePresenter
+    interface Presenter : BasePresenter {
+
+    }
 }

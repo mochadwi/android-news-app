@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MobileNews</string>
+    <string name="message_empty_item">Item currently not available</string>
 </resources>

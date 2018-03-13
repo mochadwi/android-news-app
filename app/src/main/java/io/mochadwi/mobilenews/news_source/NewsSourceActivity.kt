@@ -3,6 +3,7 @@ package io.mochadwi.mobilenews.news_source
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import io.mochadwi.mobilenews.R
+import io.mochadwi.mobilenews.network.RESTGenerator
 import io.mochadwi.mobilenews.util.ActivityHelper
 
 class NewsSourceActivity : AppCompatActivity() {
