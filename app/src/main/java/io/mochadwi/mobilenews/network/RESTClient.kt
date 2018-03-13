@@ -1,10 +1,9 @@
 package io.mochadwi.mobilenews.network
 
-import io.mochadwi.mobilenews.model.news_source.NewsSourceModel
+import io.mochadwi.mobilenews.news_source.model.NewsSourceModel
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
-import rx.Observable
 
 /**
  * Created by mochadwi on 3/13/18.

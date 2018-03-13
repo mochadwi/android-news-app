@@ -1,8 +1,6 @@
 package io.mochadwi.mobilenews.news_source;
 
-import android.widget.Toast;
-
-import io.mochadwi.mobilenews.model.news_source.NewsSourceModel;
+import io.mochadwi.mobilenews.news_source.model.NewsSourceModel;
 import io.mochadwi.mobilenews.network.RESTClient;
 import io.mochadwi.mobilenews.network.RESTGenerator;
 import retrofit2.Call;
@@ -35,7 +33,8 @@ public class NewsSourcePresenter implements NewsSourceContract.Presenter {
                     @Override
                     public void onResponse(Call<NewsSourceModel> call, Response<NewsSourceModel> response) {
                         mView.hideProgress();
-                        mView.showToast(response.body().toString());
+//                        mView.showToast(response.body().toString());
+                        mView.setRecyclerView(response.body());
                     }
 
                     @Override
