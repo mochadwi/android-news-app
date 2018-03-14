@@ -1,4 +1,4 @@
-package io.mochadwi.mobilenews.news_source.adapter
+package io.mochadwi.mobilenews.articles.adapter
 
 import android.support.v7.widget.CardView
 import android.support.v7.widget.RecyclerView
@@ -11,7 +11,7 @@ import io.mochadwi.mobilenews.R
 /**
  * Created by mochadwi on 3/13/18.
  */
-class NewsSourceViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class ArticlesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     @BindView(R.id.cv_item)
     lateinit var mCvItem: CardView

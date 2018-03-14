@@ -1,4 +1,4 @@
-package io.mochadwi.mobilenews.news_source
+package io.mochadwi.mobilenews.articles
 
 import android.app.ProgressDialog
 import android.graphics.Color
@@ -14,25 +14,55 @@ import android.widget.TextView
 import android.widget.Toast
 import butterknife.BindView
 import butterknife.ButterKnife
+import com.google.gson.Gson
 import io.mochadwi.mobilenews.BuildConfig
 import io.mochadwi.mobilenews.R
-import io.mochadwi.mobilenews.news_source.adapter.NewsSourceAdapter
-import io.mochadwi.mobilenews.news_source.model.NewsSourceModel
+import io.mochadwi.mobilenews.articles.model.ArticlesModel
+import io.mochadwi.mobilenews.articles.adapter.ArticlesAdapter
 
 /**
  * Created by mochadwi on 3/13/18.
  */
-class NewsSourceFragment : Fragment(), NewsSourceContract.View {
+class ArticlesFragment : Fragment(), ArticlesContract.View {
 
     // DATA
-    private var mPresenter: NewsSourceContract.Presenter? = null
-    private var mAdapter: NewsSourceAdapter? = null
+    private var mPresenter: ArticlesContract.Presenter? = null
+    private var mAdapter: ArticlesAdapter? = null
+    private var mParam1: String? = null
+    private var mParam2: String? = null
 
     // UI
     @BindView(R.id.rv_items) internal lateinit var mRvItems: RecyclerView
     @BindView(R.id.txt_empty_items) internal lateinit var mTxtItems: TextView
-
     private var progress: ProgressDialog? = null
+
+    companion object {
+
+        // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+        private val ARG_PARAM1 = "param1"
+        private val ARG_PARAM2 = "param2"
+
+        fun newInstance(): ArticlesFragment {
+            return ArticlesFragment()
+        }
+
+        fun newInstance(param1: String, param2: String): ArticlesFragment {
+            val fragment = ArticlesFragment()
+            val args = Bundle()
+            args.putString(ARG_PARAM1, param1)
+            args.putString(ARG_PARAM2, param2)
+            fragment.arguments = args
+            return fragment
+        }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        if (arguments != null) {
+            mParam1 = arguments.getString(ARG_PARAM1)
+            mParam2 = arguments.getString(ARG_PARAM2)
+        }
+    }
 
     override fun onStart() {
         super.onStart()
@@ -44,12 +74,12 @@ class NewsSourceFragment : Fragment(), NewsSourceContract.View {
         mPresenter!!.start()
     }
 
-    override fun setPresenter(presenter: NewsSourceContract.Presenter) {
+    override fun setPresenter(presenter: ArticlesContract.Presenter) {
         this.mPresenter = presenter
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater!!.inflate(R.layout.content_news_source, container, false)
+        val view = inflater!!.inflate(R.layout.content_articles, container, false)
         ButterKnife.bind(this, view)
 
         return view
@@ -58,16 +88,17 @@ class NewsSourceFragment : Fragment(), NewsSourceContract.View {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        mPresenter!!.getNews(BuildConfig.APIKEY)
+        val item = Gson().fromJson<ArticlesModel>(mParam1, ArticlesModel::class.java)
+        mPresenter!!.getArticles(item.articles!![0]!!.source!!.id!!, BuildConfig.APIKEY)
     }
 
-    override fun setRecyclerView(data: NewsSourceModel) {
+    override fun setRecyclerView(data: ArticlesModel) {
 
         mTxtItems.visibility = View.GONE
         mRvItems.visibility = View.VISIBLE
 
         mRvItems.layoutManager = GridLayoutManager(context, 2)
-        mAdapter = NewsSourceAdapter(context, data)
+        mAdapter = ArticlesAdapter(context, data)
         mRvItems.adapter = mAdapter
     }
 
@@ -86,13 +117,6 @@ class NewsSourceFragment : Fragment(), NewsSourceContract.View {
     override fun hideProgress() {
         if (progress != null) { //null checker
             progress!!.dismiss()
-        }
-    }
-
-    companion object {
-
-        fun newInstance(): NewsSourceFragment {
-            return NewsSourceFragment()
         }
     }
 }

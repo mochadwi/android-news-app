@@ -17,7 +17,7 @@ class NewsSourceActivity : AppCompatActivity() {
         setContentView(R.layout.activity_news_source)
 
         var view: NewsSourceFragment? = supportFragmentManager
-                .findFragmentById(R.id.fragment_layout) as NewsSourceFragment
+                .findFragmentById(R.id.fragment_layout) as? NewsSourceFragment
 
         if (view == null) {
             view = NewsSourceFragment.newInstance()
