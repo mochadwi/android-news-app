@@ -11,7 +11,7 @@ data class ArticlesItem(
 	val publishedAt: String? = null,
 
 	@field:SerializedName("author")
-	val author: String? = null,
+	val author: String = "",
 
 	@field:SerializedName("urlToImage")
 	val urlToImage: String? = null,

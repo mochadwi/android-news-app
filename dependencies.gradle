@@ -44,7 +44,7 @@ ext {
             readMore                : "com.borjabravo:readmoretextview:${readMoreVersion}",
             relativeTime            : "com.github.curioustechizen.android-ago:library:${relativeTimeVersion}",
             jodaTime                : "joda-time:joda-time:${jodaTimeVersion}",
-            kodaTime                : "com.github.debop:koda-time:${jodaTimeVersion}"
+            kodaTime                : "com.github.debop:koda-time:${kodaTimeVersion}"
     ]
 
     testLibraries = [

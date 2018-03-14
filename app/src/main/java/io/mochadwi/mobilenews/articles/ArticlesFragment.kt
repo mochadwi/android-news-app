@@ -33,6 +33,7 @@ class ArticlesFragment : Fragment(), ArticlesContract.View {
     private var mParam2: String? = null
 
     // UI
+    private lateinit var searchView: SearchView
     @BindView(R.id.rv_items) internal lateinit var mRvItems: RecyclerView
     @BindView(R.id.txt_empty_items) internal lateinit var mTxtItems: TextView
     private var progress: ProgressDialog? = null
@@ -79,8 +80,6 @@ class ArticlesFragment : Fragment(), ArticlesContract.View {
         this.mPresenter = presenter
     }
 
-
-
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater!!.inflate(R.layout.content_articles, container, false)
         ButterKnife.bind(this, view)
@@ -104,6 +103,8 @@ class ArticlesFragment : Fragment(), ArticlesContract.View {
         mRvItems.layoutManager = GridLayoutManager(context, 1)
         mAdapter = ArticlesAdapter(context, data)
         mRvItems.adapter = mAdapter
+
+        mPresenter!!.searchArticles(searchView, mAdapter!!)
     }
 
     override fun showToast(message: String) {
@@ -127,12 +128,12 @@ class ArticlesFragment : Fragment(), ArticlesContract.View {
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
         super.onCreateOptionsMenu(menu, inflater)
 
-        menu?.clear()
+        menu!!.clear()
 
-        inflater?.inflate(R.menu.menu_articles, menu)
+        inflater!!.inflate(R.menu.menu_articles, menu)
 
-        val item = menu?.findItem(R.id.search)
-        val searchView = SearchView((context as? ArticlesActivity)?.supportActionBar?.themedContext)
+        val item = menu.findItem(R.id.search)
+        searchView = SearchView((context as? ArticlesActivity)?.supportActionBar?.themedContext)
         MenuItemCompat.setShowAsAction(
                 item,
                 MenuItemCompat.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW or

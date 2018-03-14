@@ -3,6 +3,7 @@ package io.mochadwi.mobilenews.util;
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentTransaction
+import com.github.debop.javatimes.NowLocalDate
 import org.joda.time.DateTime
 import org.joda.time.format.ISODateTimeFormat
 import java.time.LocalDateTime
@@ -25,8 +26,8 @@ class PublicMethods {
         }
 
         fun stringToLocalDate(dtStart: String?): Date {
-//            if (dtStart == null)
-//                return
+            if (dtStart == null)
+                return Date()
 
             val parser = ISODateTimeFormat.dateTimeParser()
 

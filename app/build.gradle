@@ -80,4 +80,5 @@ dependencies {
     implementation libraries.readMore
     compile libraries.relativeTime
     implementation libraries.jodaTime
+    implementation libraries.kodaTime
 }

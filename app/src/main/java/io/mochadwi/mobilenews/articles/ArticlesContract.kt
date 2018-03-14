@@ -3,6 +3,7 @@ package io.mochadwi.mobilenews.articles
 import android.support.v7.widget.SearchView
 import io.mochadwi.mobilenews.BasePresenter
 import io.mochadwi.mobilenews.BaseView
+import io.mochadwi.mobilenews.articles.adapter.ArticlesAdapter
 import io.mochadwi.mobilenews.articles.model.ArticlesModel
 
 /**
@@ -15,6 +16,6 @@ interface ArticlesContract {
 
     interface Presenter : BasePresenter {
         fun getArticles(sources: String, apiKey: String)
-        fun searchArticles(sv: SearchView)
+        fun searchArticles(sv: SearchView, adapter: ArticlesAdapter)
     }
 }

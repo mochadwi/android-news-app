@@ -1,12 +1,16 @@
 package io.mochadwi.mobilenews.articles
 
 import android.support.v7.widget.SearchView
+import android.util.Log
+import android.widget.Toast
+import io.mochadwi.mobilenews.articles.adapter.ArticlesAdapter
 import io.mochadwi.mobilenews.articles.model.ArticlesModel
 import io.mochadwi.mobilenews.network.RESTClient
 import io.mochadwi.mobilenews.network.RESTGenerator
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+
 
 /**
  * Created by mochadwi on 3/13/18.
@@ -38,7 +42,18 @@ class ArticlesPresenter(private val mView: ArticlesContract.View) : ArticlesCont
                 })
     }
 
-    override fun searchArticles(sv: SearchView) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun searchArticles(sv: SearchView, adapter: ArticlesAdapter) {
+        sv.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+
+                adapter.filter.filter(newText)
+                return true
+            }
+        })
     }
 }
