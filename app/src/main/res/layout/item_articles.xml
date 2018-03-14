@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginEnd="8dp"
+    android:layout_marginLeft="8dp"
     android:layout_marginStart="8dp"
     android:layout_marginTop="8dp">
 
@@ -14,11 +15,31 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <com.github.curioustechizen.ago.RelativeTimeTextView
+            android:id="@+id/txt_published"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Posted time"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="#8A000000"
+            android:textSize="12sp"
+            android:textStyle="italic"
+            app:layout_constraintBottom_toTopOf="@+id/img_media"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:relative_time_prefix="- Published "/>
+
         <ImageView
             android:id="@+id/img_media"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/txt_title"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toTopOf="@+id/txt_primary"
             app:layout_constraintDimensionRatio="H,16:9"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -26,22 +47,52 @@
             app:layout_constraintVertical_chainStyle="packed"/>
 
         <TextView
-            android:id="@+id/txt_title"
+            android:id="@+id/txt_primary"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
             android:layout_marginEnd="16dp"
+            android:layout_marginLeft="16dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:lineSpacingExtra="8dp"
-            android:text="test title"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:layout_marginTop="24dp"
+            android:text="Title"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
             android:textColor="#DE000000"
-            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/txt_sub"
+            app:layout_constraintEnd_toStartOf="@+id/txt_author"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_media"/>
+
+        <TextView
+            android:id="@+id/txt_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:text="Author Text"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="#8A000000"
+            app:layout_constraintBaseline_toBaselineOf="@+id/txt_primary"
+            app:layout_constraintBottom_toTopOf="@+id/txt_sub"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/txt_primary"
+            app:layout_constraintTop_toBottomOf="@+id/img_media"/>
+
+        <TextView
+            android:id="@+id/txt_sub"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:text="Sub Text"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textColor="#8A000000"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/img_media"/>
+            app:layout_constraintTop_toBottomOf="@+id/txt_primary"/>
 
     </android.support.constraint.ConstraintLayout>
 </android.support.v7.widget.CardView>

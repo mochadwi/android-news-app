@@ -3,7 +3,7 @@ package io.mochadwi.mobilenews.articles
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import io.mochadwi.mobilenews.R
-import io.mochadwi.mobilenews.util.ActivityHelper
+import io.mochadwi.mobilenews.util.PublicMethods
 
 /**
  * Created by mochadwi on 3/13/18.
@@ -24,7 +24,7 @@ class ArticlesActivity : AppCompatActivity() {
         if (view == null) {
             view = ArticlesFragment.newInstance(sources!!, "")
 
-            ActivityHelper.addFragmentToActivity(supportFragmentManager,
+            PublicMethods.addFragmentToActivity(supportFragmentManager,
                     view, R.id.fragment_layout)
         }
 

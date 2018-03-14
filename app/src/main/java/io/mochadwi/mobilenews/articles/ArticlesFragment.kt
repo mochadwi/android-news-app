@@ -99,7 +99,7 @@ class ArticlesFragment : Fragment(), ArticlesContract.View {
         mTxtItems.visibility = View.GONE
         mRvItems.visibility = View.VISIBLE
 
-        mRvItems.layoutManager = GridLayoutManager(context, 2)
+        mRvItems.layoutManager = GridLayoutManager(context, 1)
         mAdapter = ArticlesAdapter(context, data)
         mRvItems.adapter = mAdapter
     }

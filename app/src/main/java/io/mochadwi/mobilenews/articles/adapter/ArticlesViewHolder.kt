@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import butterknife.BindView
 import butterknife.ButterKnife
+import com.github.curioustechizen.ago.RelativeTimeTextView
 import io.mochadwi.mobilenews.R
 
 /**
@@ -18,8 +19,14 @@ class ArticlesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     lateinit var mCvItem: CardView
     @BindView(R.id.img_media)
     lateinit var mIvMedia: ImageView
-    @BindView(R.id.txt_title)
-    lateinit var mTxtTitle: TextView
+    @BindView(R.id.txt_primary)
+    lateinit var mTxtPrimary: TextView
+    @BindView(R.id.txt_sub)
+    lateinit var mTxtSub: TextView
+    @BindView(R.id.txt_author)
+    lateinit var mTxtAuthor: TextView
+    @BindView(R.id.txt_published)
+    lateinit var mTxtPublished: RelativeTimeTextView
 
     init {
         ButterKnife.bind(this, itemView)

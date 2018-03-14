@@ -1,13 +1,13 @@
 package io.mochadwi.mobilenews.articles.adapter
 
 import android.content.Context
-import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import io.mochadwi.mobilenews.R
 import io.mochadwi.mobilenews.articles.model.ArticlesModel
+import io.mochadwi.mobilenews.util.PublicMethods
 
 /**
  * Created by mochadwi on 3/13/18.
@@ -32,11 +32,13 @@ class ArticlesAdapter : RecyclerView.Adapter<ArticlesViewHolder> {
 
         val item = mArticles.articles!![position]
 
-        holder.mTxtTitle.text = item?.author
         Glide.with(mCtx)
                 .load(item?.urlToImage)
                 .into(holder.mIvMedia)
-//        holder.mTxtSource!!.text = mCtx.getString(R.string.message_articles, item?.url)
+        holder.mTxtPrimary.text = item?.title
+        holder.mTxtSub.text = item?.source?.name
+        holder.mTxtAuthor.text = item?.author ?: "Unknown"
+        holder.mTxtPublished.setReferenceTime(PublicMethods.stringToLocalDate(item?.publishedAt).time)
     }
 
     override fun getItemCount(): Int {

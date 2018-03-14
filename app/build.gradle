@@ -77,4 +77,6 @@ dependencies {
 
     //util
     implementation libraries.readMore
+    compile libraries.relativeTime
+    implementation libraries.jodaTime
 }
