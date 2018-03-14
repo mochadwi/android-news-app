@@ -5,6 +5,7 @@ import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
 import io.mochadwi.mobilenews.R
 import io.mochadwi.mobilenews.articles.model.ArticlesModel
 
@@ -32,7 +33,9 @@ class ArticlesAdapter : RecyclerView.Adapter<ArticlesViewHolder> {
         val item = mArticles.articles!![position]
 
         holder.mTxtTitle.text = item?.author
-        holder.mTxtTitleSupport.text = item?.description
+        Glide.with(mCtx)
+                .load(item?.urlToImage)
+                .into(holder.mIvMedia)
 //        holder.mTxtSource!!.text = mCtx.getString(R.string.message_articles, item?.url)
     }
 

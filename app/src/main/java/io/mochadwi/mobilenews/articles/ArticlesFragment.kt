@@ -19,6 +19,8 @@ import io.mochadwi.mobilenews.BuildConfig
 import io.mochadwi.mobilenews.R
 import io.mochadwi.mobilenews.articles.model.ArticlesModel
 import io.mochadwi.mobilenews.articles.adapter.ArticlesAdapter
+import io.mochadwi.mobilenews.articles.model.ArticlesItem
+import io.mochadwi.mobilenews.news_source.model.SourcesItem
 
 /**
  * Created by mochadwi on 3/13/18.
@@ -88,8 +90,8 @@ class ArticlesFragment : Fragment(), ArticlesContract.View {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        val item = Gson().fromJson<ArticlesModel>(mParam1, ArticlesModel::class.java)
-        mPresenter!!.getArticles(item.articles!![0]!!.source!!.id!!, BuildConfig.APIKEY)
+        val item = Gson().fromJson<SourcesItem>(mParam1, SourcesItem::class.java)
+        mPresenter!!.getArticles(item!!.id!!, BuildConfig.APIKEY)
     }
 
     override fun setRecyclerView(data: ArticlesModel) {
