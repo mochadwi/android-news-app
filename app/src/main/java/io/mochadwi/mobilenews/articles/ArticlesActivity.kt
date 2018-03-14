@@ -2,9 +2,13 @@ package io.mochadwi.mobilenews.articles
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.Menu
 import android.view.MenuItem
 import io.mochadwi.mobilenews.R
 import io.mochadwi.mobilenews.util.PublicMethods
+import android.support.v4.view.MenuItemCompat
+import android.support.v7.widget.SearchView
+
 
 /**
  * Created by mochadwi on 3/13/18.

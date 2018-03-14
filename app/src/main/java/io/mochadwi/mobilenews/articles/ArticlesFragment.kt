@@ -5,11 +5,11 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.view.MenuItemCompat
 import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.support.v7.widget.SearchView
+import android.view.*
 import android.widget.TextView
 import android.widget.Toast
 import butterknife.BindView
@@ -17,9 +17,8 @@ import butterknife.ButterKnife
 import com.google.gson.Gson
 import io.mochadwi.mobilenews.BuildConfig
 import io.mochadwi.mobilenews.R
-import io.mochadwi.mobilenews.articles.model.ArticlesModel
 import io.mochadwi.mobilenews.articles.adapter.ArticlesAdapter
-import io.mochadwi.mobilenews.articles.model.ArticlesItem
+import io.mochadwi.mobilenews.articles.model.ArticlesModel
 import io.mochadwi.mobilenews.news_source.model.SourcesItem
 
 /**
@@ -80,9 +79,12 @@ class ArticlesFragment : Fragment(), ArticlesContract.View {
         this.mPresenter = presenter
     }
 
+
+
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater!!.inflate(R.layout.content_articles, container, false)
         ButterKnife.bind(this, view)
+        setHasOptionsMenu(true)
 
         return view
     }
@@ -120,5 +122,21 @@ class ArticlesFragment : Fragment(), ArticlesContract.View {
         if (progress != null) { //null checker
             progress!!.dismiss()
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+        super.onCreateOptionsMenu(menu, inflater)
+
+        menu?.clear()
+
+        inflater?.inflate(R.menu.menu_articles, menu)
+
+        val item = menu?.findItem(R.id.search)
+        val searchView = SearchView((context as? ArticlesActivity)?.supportActionBar?.themedContext)
+        MenuItemCompat.setShowAsAction(
+                item,
+                MenuItemCompat.SHOW_AS_ACTION_COLLAPSE_ACTION_VIEW or
+                        MenuItemCompat.SHOW_AS_ACTION_IF_ROOM)
+        MenuItemCompat.setActionView(item, searchView)
     }
 }

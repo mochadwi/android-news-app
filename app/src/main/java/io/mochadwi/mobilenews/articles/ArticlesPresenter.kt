@@ -1,5 +1,6 @@
 package io.mochadwi.mobilenews.articles
 
+import android.support.v7.widget.SearchView
 import io.mochadwi.mobilenews.articles.model.ArticlesModel
 import io.mochadwi.mobilenews.network.RESTClient
 import io.mochadwi.mobilenews.network.RESTGenerator
@@ -35,5 +36,9 @@ class ArticlesPresenter(private val mView: ArticlesContract.View) : ArticlesCont
                         mView.showToast(t.message!!)
                     }
                 })
+    }
+
+    override fun searchArticles(sv: SearchView) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }
