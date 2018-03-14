@@ -16,6 +16,8 @@ class NewsSourceActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_news_source)
 
+        supportActionBar?.title = getString(R.string.message_dashboard)
+
         var view: NewsSourceFragment? = supportFragmentManager
                 .findFragmentById(R.id.fragment_layout) as? NewsSourceFragment
 

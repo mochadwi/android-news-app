@@ -40,7 +40,7 @@ class RESTGenerator {
                     .addConverterFactory(GsonConverterFactory.create())
                     .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                     .baseUrl(url)
-                    .client(UnsafeOkHttpClient.unsafeOkHttpClient)
+                    .client(UnsafeOkhttpClient.unsafeOkHttpClient)
                     .build()
         }
 

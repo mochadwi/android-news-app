@@ -25,6 +25,20 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".articles.ArticlesWebViewActivity">
         </activity>
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/title_activity_main"
+            android:parentActivityName=".articles.ArticlesActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="io.mochadwi.mobilenews.articles.ArticlesActivity"/>
+        </activity>
+        <activity
+            android:name=".articles.MainActivity"
+            android:label="@string/title_activity_main"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        </activity>
     </application>
 
 </manifest>
