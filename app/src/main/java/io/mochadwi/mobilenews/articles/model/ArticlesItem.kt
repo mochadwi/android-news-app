@@ -1,5 +1,6 @@
 package io.mochadwi.mobilenews.articles.model
 
+import com.google.gson.Gson
 import javax.annotation.Generated
 import com.google.gson.annotations.SerializedName
 
@@ -26,4 +27,10 @@ data class ArticlesItem(
 
 	@field:SerializedName("url")
 	val url: String? = null
-)
+
+
+) {
+	override fun toString(): String {
+		return Gson().toJson(this)
+	}
+}

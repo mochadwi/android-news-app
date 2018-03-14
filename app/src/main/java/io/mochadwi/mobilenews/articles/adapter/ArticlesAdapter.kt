@@ -1,11 +1,14 @@
 package io.mochadwi.mobilenews.articles.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import io.mochadwi.mobilenews.R
+import io.mochadwi.mobilenews.articles.ArticlesActivity
+import io.mochadwi.mobilenews.articles.ArticlesWebViewActivity
 import io.mochadwi.mobilenews.articles.model.ArticlesModel
 import io.mochadwi.mobilenews.util.PublicMethods
 
@@ -32,7 +35,12 @@ class ArticlesAdapter : RecyclerView.Adapter<ArticlesViewHolder> {
 
         val item = mArticles.articles!![position]
 
-        holder.mTxtAuthor.text = item?.author ?: "Unknown"
+        holder.mCvItem.setOnClickListener {
+            val i = Intent(mCtx, ArticlesWebViewActivity::class.java)
+            i.putExtra("article", item.toString())
+            mCtx.startActivity(i)
+        }
+        holder.mTxtAuthor.text = mCtx.getString(R.string.message_author, item?.author ?: "Unknown")
         holder.mTxtSource.text = item?.source?.name ?: "Unknown"
         holder.mTxtPublished.setReferenceTime(PublicMethods.stringToLocalDate(item?.publishedAt).time)
         Glide.with(mCtx)
