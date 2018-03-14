@@ -32,13 +32,14 @@ class ArticlesAdapter : RecyclerView.Adapter<ArticlesViewHolder> {
 
         val item = mArticles.articles!![position]
 
+        holder.mTxtAuthor.text = item?.author ?: "Unknown"
+        holder.mTxtSource.text = item?.source?.name ?: "Unknown"
+        holder.mTxtPublished.setReferenceTime(PublicMethods.stringToLocalDate(item?.publishedAt).time)
         Glide.with(mCtx)
                 .load(item?.urlToImage)
                 .into(holder.mIvMedia)
         holder.mTxtPrimary.text = item?.title
-        holder.mTxtSub.text = item?.source?.name
-        holder.mTxtAuthor.text = item?.author ?: "Unknown"
-        holder.mTxtPublished.setReferenceTime(PublicMethods.stringToLocalDate(item?.publishedAt).time)
+        holder.mTxtDescription.text = item?.description
     }
 
     override fun getItemCount(): Int {

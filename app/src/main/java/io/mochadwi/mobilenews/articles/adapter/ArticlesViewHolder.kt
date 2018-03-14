@@ -17,16 +17,18 @@ class ArticlesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     @BindView(R.id.cv_item)
     lateinit var mCvItem: CardView
+    @BindView(R.id.txt_source)
+    lateinit var mTxtSource: TextView
+    @BindView(R.id.txt_published)
+    lateinit var mTxtPublished: RelativeTimeTextView
     @BindView(R.id.img_media)
     lateinit var mIvMedia: ImageView
     @BindView(R.id.txt_primary)
     lateinit var mTxtPrimary: TextView
-    @BindView(R.id.txt_sub)
-    lateinit var mTxtSub: TextView
+    @BindView(R.id.txt_description)
+    lateinit var mTxtDescription: TextView
     @BindView(R.id.txt_author)
     lateinit var mTxtAuthor: TextView
-    @BindView(R.id.txt_published)
-    lateinit var mTxtPublished: RelativeTimeTextView
 
     init {
         ButterKnife.bind(this, itemView)
