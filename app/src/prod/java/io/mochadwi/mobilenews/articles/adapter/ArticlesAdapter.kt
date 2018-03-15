@@ -63,7 +63,7 @@ class ArticlesAdapter : RecyclerView.Adapter<ArticlesViewHolder>, Filterable {
     override fun getFilter(): Filter {
         return object : Filter() {
             override fun performFiltering(p0: CharSequence?): FilterResults {
-                val charString = p0.toString()
+                val charString = p0.toString().toLowerCase()
 
                 when (charString.isEmpty()) {
 
