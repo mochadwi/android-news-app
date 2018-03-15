@@ -2,7 +2,9 @@ package io.mochadwi.mobilenews.news_source.model
 
 import com.google.gson.Gson
 import com.google.gson.annotations.SerializedName
+import io.mochadwi.mobilenews.util.CloneableRealmObject
 import io.realm.RealmObject
+import io.realm.annotations.PrimaryKey
 import io.realm.annotations.RealmClass
 import javax.annotation.Generated
 
@@ -22,6 +24,7 @@ open class SourcesItem(
 	@field:SerializedName("language")
 	var language: String? = null,
 
+	@PrimaryKey
 	@field:SerializedName("id")
 	var id: String? = null,
 
@@ -31,9 +34,24 @@ open class SourcesItem(
 	@field:SerializedName("url")
 	var url: String? = null
 
+//	@field:SerializedName("timestamps")
+//	var timestamps: Int = 0
 
-) : RealmObject() {
+) : RealmObject(), CloneableRealmObject<SourcesItem> {
 	override fun toString(): String {
-		return Gson().toJson(this)
+		return Gson().toJson(this.cloneRealmObject())
+	}
+
+	override fun cloneRealmObject(): SourcesItem {
+		val clone = SourcesItem()
+		clone.id = this.id
+		clone.name = this.name
+		clone.country = this.country
+		clone.description = this.description
+		clone.language = this.language
+		clone.category = this.category
+		clone.url = this.url
+//		clone.timestamps = this.timestamps
+		return clone
 	}
 }

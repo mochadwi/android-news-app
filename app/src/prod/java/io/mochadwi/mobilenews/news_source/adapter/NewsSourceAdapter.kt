@@ -43,9 +43,9 @@ class NewsSourceAdapter : RecyclerView.Adapter<NewsSourceViewHolder> {
             i.putExtra("sources", item.toString())
             mCtx.startActivity(i)
         }
-        holder.mTxtTitle.text = item!!.name
-        holder.mTxtTitleSupport.text = item.description
-        holder.mTxtSource.text = mCtx.getString(R.string.message_news_source, item.url)
+        holder.mTxtTitle.text = item?.name
+        holder.mTxtTitleSupport.text = item?.description
+        holder.mTxtSource.text = mCtx.getString(R.string.message_news_source, item?.url)
     }
 
     override fun getItemCount(): Int {

@@ -62,9 +62,12 @@ class NewsSourcePresenter(private val mView: NewsSourceContract.View) : NewsSour
                     mView.hideProgress()
 
                     val news = ArrayList<SourcesItem>()
-
+//
                     newsRealm.asSequence()
-                            .mapTo(news) { it }
+                            .mapTo(news) { it.cloneRealmObject() }
+//                    for (item in newsRealm) {
+//                        news.add(item)
+//                    }
 
                     mView.setRecyclerView(news)
                 } else {
