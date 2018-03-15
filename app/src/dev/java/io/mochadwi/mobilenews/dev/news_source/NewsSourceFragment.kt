@@ -1,4 +1,4 @@
-package io.mochadwi.mobilenews.news_source
+package io.mochadwi.mobilenews.dev.news_source
 
 import android.app.ProgressDialog
 import android.graphics.Color
@@ -16,8 +16,8 @@ import butterknife.BindView
 import butterknife.ButterKnife
 import io.mochadwi.mobilenews.BuildConfig
 import io.mochadwi.mobilenews.R
-import io.mochadwi.mobilenews.news_source.adapter.NewsSourceAdapter
-import io.mochadwi.mobilenews.news_source.model.NewsSourceModel
+import io.mochadwi.mobilenews.dev.news_source.adapter.NewsSourceAdapter
+import io.mochadwi.mobilenews.dev.news_source.model.NewsSourceModel
 
 /**
  * Created by mochadwi on 3/13/18.

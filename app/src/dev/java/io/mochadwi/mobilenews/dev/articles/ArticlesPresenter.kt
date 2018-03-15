@@ -1,10 +1,10 @@
-package io.mochadwi.mobilenews.articles
+package io.mochadwi.mobilenews.dev.articles
 
 import android.support.v7.widget.SearchView
 import android.util.Log
 import android.widget.Toast
-import io.mochadwi.mobilenews.articles.adapter.ArticlesAdapter
-import io.mochadwi.mobilenews.articles.model.ArticlesModel
+import io.mochadwi.mobilenews.dev.articles.adapter.ArticlesAdapter
+import io.mochadwi.mobilenews.dev.articles.model.ArticlesModel
 import io.mochadwi.mobilenews.network.RESTClient
 import io.mochadwi.mobilenews.network.RESTGenerator
 import io.mochadwi.mobilenews.util.RxSearch

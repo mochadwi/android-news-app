@@ -1,13 +1,17 @@
 package io.mochadwi.mobilenews.network
 
+import com.google.gson.ExclusionStrategy
+import com.google.gson.FieldAttributes
+import com.google.gson.GsonBuilder
 import io.mochadwi.mobilenews.BuildConfig
-import okhttp3.OkHttpClient
+import io.mochadwi.mobilenews.news_source.model.SourcesItemSerializer
+import io.realm.RealmObject
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
-import java.util.concurrent.TimeUnit
+
 
 /**
  * Created by mochadwi on 3/13/18.
@@ -15,7 +19,7 @@ import java.util.concurrent.TimeUnit
 class RESTGenerator {
 
     companion object {
-        private val logging = HttpLoggingInterceptor()
+        val logging = HttpLoggingInterceptor()
                 .setLevel(HttpLoggingInterceptor.Level.BODY)
 
         fun getRetrofitClient(): Retrofit {
@@ -27,21 +31,46 @@ class RESTGenerator {
         }
 
         private fun buildClient(url: String): Retrofit {
-            val okHttpClient = OkHttpClient.Builder()
-                    .readTimeout(60, TimeUnit.SECONDS)
-                    .connectTimeout(60, TimeUnit.SECONDS)
-                    .writeTimeout(60, TimeUnit.SECONDS)
+
+            // Create Gson builder
+            val gsonBuilder = GsonBuilder()
+
+            gsonBuilder.setExclusionStrategies(object : ExclusionStrategy {
+                override fun shouldSkipField(f: FieldAttributes): Boolean {
+                    return f.declaringClass == RealmObject::class.java
+                }
+
+                override fun shouldSkipClass(clazz: Class<*>): Boolean {
+                    return false
+                }
+            })
+
+            // Register adapter to builder
+            try {
+                gsonBuilder.registerTypeAdapter(
+                        Class.forName(
+                                "io.realm.io_mochadwi_mobilenews_news_source_model_SourcesItemRealmProxy"),
+                        SourcesItemSerializer())
+            } catch (e: ClassNotFoundException) {
+                e.printStackTrace()
+            }
 
 
-            okHttpClient.addInterceptor(logging)
+            // Create gson
+            val gson = gsonBuilder.create()
 
             return Retrofit.Builder()
                     .addConverterFactory(ScalarsConverterFactory.create())
-                    .addConverterFactory(GsonConverterFactory.create())
+                    .addConverterFactory(GsonConverterFactory.create(gson))
                     .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                     .baseUrl(url)
                     .client(UnsafeOkhttpClient.unsafeOkHttpClient)
                     .build()
+        }
+
+        fun <S> createService(url: String, serviceClass: Class<S>): S {
+
+            return buildClient(url).create(serviceClass)
         }
 
     }

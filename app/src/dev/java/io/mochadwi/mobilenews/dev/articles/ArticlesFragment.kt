@@ -1,4 +1,4 @@
-package io.mochadwi.mobilenews.articles
+package io.mochadwi.mobilenews.dev.articles
 
 import android.app.ProgressDialog
 import android.graphics.Color
@@ -17,9 +17,9 @@ import butterknife.ButterKnife
 import com.google.gson.Gson
 import io.mochadwi.mobilenews.BuildConfig
 import io.mochadwi.mobilenews.R
-import io.mochadwi.mobilenews.articles.adapter.ArticlesAdapter
-import io.mochadwi.mobilenews.articles.model.ArticlesModel
-import io.mochadwi.mobilenews.news_source.model.SourcesItem
+import io.mochadwi.mobilenews.dev.articles.adapter.ArticlesAdapter
+import io.mochadwi.mobilenews.dev.articles.model.ArticlesModel
+import io.mochadwi.mobilenews.dev.news_source.model.SourcesItem
 
 /**
  * Created by mochadwi on 3/13/18.

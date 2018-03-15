@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">MobileNews</string>
     <string name="message_empty_item">Item currently not available</string>
     <string name="message_news_source">Source: \n%1$s</string>
     <string name="message_author">Author: %1$s</string>

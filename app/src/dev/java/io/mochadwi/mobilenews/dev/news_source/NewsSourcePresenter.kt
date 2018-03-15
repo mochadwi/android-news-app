@@ -1,8 +1,8 @@
-package io.mochadwi.mobilenews.news_source
+package io.mochadwi.mobilenews.dev.news_source
 
 import io.mochadwi.mobilenews.network.RESTClient
 import io.mochadwi.mobilenews.network.RESTGenerator
-import io.mochadwi.mobilenews.news_source.model.NewsSourceModel
+import io.mochadwi.mobilenews.dev.news_source.model.NewsSourceModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
