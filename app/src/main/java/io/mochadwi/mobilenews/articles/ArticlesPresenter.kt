@@ -7,9 +7,13 @@ import io.mochadwi.mobilenews.articles.adapter.ArticlesAdapter
 import io.mochadwi.mobilenews.articles.model.ArticlesModel
 import io.mochadwi.mobilenews.network.RESTClient
 import io.mochadwi.mobilenews.network.RESTGenerator
+import io.mochadwi.mobilenews.util.RxSearch
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.internal.operators.observable.ObservableReplay.observeOn
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.concurrent.TimeUnit
 
 
 /**
@@ -43,17 +47,13 @@ class ArticlesPresenter(private val mView: ArticlesContract.View) : ArticlesCont
     }
 
     override fun searchArticles(sv: SearchView, adapter: ArticlesAdapter) {
-        sv.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-
-                return true
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-
-                adapter.filter.filter(newText)
-                return true
-            }
-        })
+        RxSearch.fromSearchView(sv)
+                .debounce(300, TimeUnit.MILLISECONDS)
+//                .filter(adapter.)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe { query ->
+                    adapter.filter.filter(query)
+                    adapter.notifyDataSetChanged()
+                }
     }
 }

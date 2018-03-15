@@ -84,7 +84,6 @@ class ArticlesAdapter : RecyclerView.Adapter<ArticlesViewHolder>, Filterable {
 
                         mFilteredArticles = filteredList
                         count = filteredList.size
-
                     }
                 }
 
