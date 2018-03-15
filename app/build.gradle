@@ -19,6 +19,19 @@ kapt {
 }
 
 android {
+
+    signingConfigs {
+        debugConfig {
+            keyAlias 'mobilenews'
+            keyPassword 'M0b1lenews!'
+            storeFile file('./keystore/mobilenews')
+            storePassword 'M0b1lenews!'
+        }
+    }
+    aaptOptions {
+        cruncherEnabled = false
+    }
+
     compileSdkVersion 26
     defaultConfig {
         applicationId "io.mochadwi.mobilenews"
@@ -62,7 +75,7 @@ android {
             renderscriptDebuggable false
             pseudoLocalesEnabled false
             zipAlignEnabled true
-//            signingConfig signingConfigs.releaseConfig
+            signingConfig signingConfigs.debugConfig
         }
     }
 }
