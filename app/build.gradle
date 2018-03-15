@@ -72,11 +72,13 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+
     kaptAndroidTest(testLibraries.espressoCore, {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    kaptTest testLibraries.junit
-    kaptTest testLibraries.mockito
+    testImplementation testLibraries.junit
+    testImplementation testLibraries.mockito
+    testImplementation testLibraries.mockitoKotlin
 
     //support
     implementation supportDependencies.appCompat

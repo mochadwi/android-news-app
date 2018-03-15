@@ -9,6 +9,7 @@ ext {
     rxJavaVersion = '2.0.2'
     rxAndroidVersion = '2.0.2'
     mockitoVersion = '2.+'
+    mockitoKotlinVersion = '1.5.0'
     butterKnifeVersion = '8.8.1'
     readMoreVersion = '2.1.0'
     relativeTimeVersion = '1.3.4'
@@ -49,8 +50,9 @@ ext {
     ]
 
     testLibraries = [
-            junit       : "junit:junit:4.12",
-            espressoCore: "com.android.support.test.espresso:espresso-core:${espressoCoreVersion}",
-            mockito     : "org.mockito:mockito-core:${mockitoVersion}"
+            junit        : "junit:junit:4.12",
+            espressoCore : "com.android.support.test.espresso:espresso-core:${espressoCoreVersion}",
+            mockito      : "org.mockito:mockito-core:${mockitoVersion}",
+            mockitoKotlin: "com.nhaarman:mockito-kotlin:${mockitoKotlinVersion}"
     ]
 }
