@@ -7,11 +7,7 @@ import io.mochadwi.mobilenews.BaseView
  * Created by mochadwi on 3/13/18.
  */
 interface SplashScreenContract {
-    interface View : BaseView<Presenter> {
+    interface View : BaseView<Presenter>
 
-    }
-
-    interface Presenter : BasePresenter {
-        fun getNews()
-    }
+    interface Presenter : BasePresenter
 }

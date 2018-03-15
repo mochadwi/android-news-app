@@ -18,22 +18,4 @@ class SplashScreenPresenter(private val mView: SplashScreenContract.View) : Spla
     override fun start() {
         mView.setPresenter(this)
     }
-
-    override fun getNews() {
-        mView.showProgress()
-
-        mRest
-                .getRecommendedSources()
-                .enqueue(object : Callback<NewsSourceModel> {
-                    override fun onResponse(call: Call<NewsSourceModel>, response: Response<NewsSourceModel>) {
-                        mView.hideProgress()
-                        mView.showToast(response.body().toString());
-                    }
-
-                    override fun onFailure(call: Call<NewsSourceModel>, t: Throwable) {
-                        mView.hideProgress()
-                        mView.showToast(t.message!!)
-                    }
-                })
-    }
 }

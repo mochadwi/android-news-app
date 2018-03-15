@@ -1,6 +1,7 @@
 package io.mochadwi.mobilenews.splashscreen
 
 import android.app.ProgressDialog
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -12,6 +13,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import butterknife.ButterKnife
 import io.mochadwi.mobilenews.R
+import io.mochadwi.mobilenews.news_source.NewsSourceActivity
 
 /**
  * Created by mochadwi on 3/13/18.
@@ -80,7 +82,7 @@ class SplashScreenFragment : Fragment(), SplashScreenContract.View {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        TODO("Implement actual splash screen here")
+        startActivity(Intent(context, NewsSourceActivity::class.java))
     }
 
     override fun showToast(message: String) {
