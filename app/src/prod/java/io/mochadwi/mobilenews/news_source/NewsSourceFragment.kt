@@ -14,10 +14,9 @@ import android.widget.TextView
 import android.widget.Toast
 import butterknife.BindView
 import butterknife.ButterKnife
-import io.mochadwi.mobilenews.BuildConfig
 import io.mochadwi.mobilenews.R
 import io.mochadwi.mobilenews.news_source.adapter.NewsSourceAdapter
-import io.mochadwi.mobilenews.news_source.model.NewsSourceModel
+import io.mochadwi.mobilenews.news_source.model.SourcesItem
 
 /**
  * Created by mochadwi on 3/13/18.
@@ -58,16 +57,20 @@ class NewsSourceFragment : Fragment(), NewsSourceContract.View {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        mPresenter!!.getNews()
+        if (mPresenter!!.isOfflineNewsEmpty()) {
+            mPresenter!!.getNews()
+        } else {
+            mPresenter!!.getOfflineNews()
+        }
     }
 
-    override fun setRecyclerView(data: NewsSourceModel) {
+    override fun setRecyclerView(data: List<SourcesItem?>?) {
 
         mTxtItems.visibility = View.GONE
         mRvItems.visibility = View.VISIBLE
 
         mRvItems.layoutManager = GridLayoutManager(context, 2)
-        mAdapter = NewsSourceAdapter(context, data)
+        mAdapter = NewsSourceAdapter(context, data as? ArrayList<SourcesItem?>)
         mRvItems.adapter = mAdapter
     }
 

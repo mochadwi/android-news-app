@@ -17,8 +17,8 @@ class MainApplication : MultiDexApplication() {
 
         val configuration = RealmConfiguration.Builder()
                 .name("mobilenews.realm")
-                .schemaVersion(1)
-                .migration(RealmMigrations())
+                .schemaVersion(2)
+                .deleteRealmIfMigrationNeeded()
                 .build()
 
         Realm.setDefaultConfiguration(configuration)
