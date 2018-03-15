@@ -10,6 +10,7 @@ import io.mochadwi.mobilenews.news_source.model.SourcesItem
 interface NewsSourceContract {
     interface View : BaseView<Presenter> {
         fun setRecyclerView(data: List<SourcesItem?>?)
+        fun setDataNotAvailable()
     }
 
     interface Presenter : BasePresenter {

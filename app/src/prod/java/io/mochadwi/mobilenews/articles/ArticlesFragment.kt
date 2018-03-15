@@ -106,13 +106,17 @@ class ArticlesFragment : Fragment(), ArticlesContract.View {
         mPresenter!!.searchArticles(searchView, mAdapter!!)
     }
 
+    override fun setDataNotAvailable() {
+        mTxtItems.visibility = View.VISIBLE
+    }
+
     override fun showToast(message: String) {
         Toast.makeText(activity, message, Toast.LENGTH_SHORT).show()
     }
 
     override fun showProgress() {
         progress = ProgressDialog(context)
-        progress!!.setCancelable(true) // disable dismiss by tapping outside of the dialog
+        progress!!.setCancelable(false) // disable dismiss by tapping outside of the dialog
         progress!!.show()
         progress!!.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         progress!!.setContentView(R.layout.progress_bar)

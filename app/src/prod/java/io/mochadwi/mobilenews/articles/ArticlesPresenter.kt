@@ -32,13 +32,18 @@ class ArticlesPresenter(private val mView: ArticlesContract.View) : ArticlesCont
                 .enqueue(object : Callback<ArticlesModel> {
                     override fun onResponse(call: Call<ArticlesModel>, response: Response<ArticlesModel>) {
                         mView.hideProgress()
-//                        mView.showToast(response.body().toString());
-                        mView.setRecyclerView(response.body()!!)
+
+                        if (response.isSuccessful) {
+                            mView.setRecyclerView(response.body()!!)
+                        } else {
+                            mView.setDataNotAvailable()
+                        }
                     }
 
                     override fun onFailure(call: Call<ArticlesModel>, t: Throwable) {
                         mView.hideProgress()
                         mView.showToast(t.message!!)
+                        mView.setDataNotAvailable()
                     }
                 })
     }

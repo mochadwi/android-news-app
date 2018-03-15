@@ -39,12 +39,15 @@ class NewsSourcePresenter(private val mView: NewsSourceContract.View) : NewsSour
                             }
 
                             mView.setRecyclerView(response.body()!!.sources!!)
+                        } else {
+                            mView.setDataNotAvailable()
                         }
                     }
 
                     override fun onFailure(call: Call<NewsSourceModel>, t: Throwable) {
                         mView.hideProgress()
                         mView.showToast(t.message!!)
+                        mView.setDataNotAvailable()
                     }
                 })
     }

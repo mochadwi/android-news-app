@@ -12,6 +12,7 @@ import io.mochadwi.mobilenews.articles.model.ArticlesModel
 interface ArticlesContract {
     interface View : BaseView<Presenter> {
         fun setRecyclerView(data: ArticlesModel)
+        fun setDataNotAvailable()
     }
 
     interface Presenter : BasePresenter {

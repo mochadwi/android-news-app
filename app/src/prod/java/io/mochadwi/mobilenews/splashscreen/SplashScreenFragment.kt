@@ -91,7 +91,7 @@ class SplashScreenFragment : Fragment(), SplashScreenContract.View {
 
     override fun showProgress() {
         progress = ProgressDialog(context)
-        progress!!.setCancelable(true) // disable dismiss by tapping outside of the dialog
+        progress!!.setCancelable(false) // disable dismiss by tapping outside of the dialog
         progress!!.show()
         progress!!.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         progress!!.setContentView(R.layout.progress_bar)
