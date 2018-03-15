@@ -1,8 +1,6 @@
 package io.mochadwi.mobilenews
 
-import android.app.Application
 import android.support.multidex.MultiDexApplication
-import io.mochadwi.mobilenews.util.RealmMigrations
 import io.realm.Realm
 import io.realm.RealmConfiguration
 

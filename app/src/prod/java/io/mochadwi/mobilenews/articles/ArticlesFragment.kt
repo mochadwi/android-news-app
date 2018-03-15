@@ -15,7 +15,6 @@ import android.widget.Toast
 import butterknife.BindView
 import butterknife.ButterKnife
 import com.google.gson.Gson
-import io.mochadwi.mobilenews.BuildConfig
 import io.mochadwi.mobilenews.R
 import io.mochadwi.mobilenews.articles.adapter.ArticlesAdapter
 import io.mochadwi.mobilenews.articles.model.ArticlesModel

@@ -2,15 +2,11 @@ package io.mochadwi.mobilenews.news_source.adapter
 
 import android.content.Context
 import android.content.Intent
-import android.support.v4.content.ContextCompat.startActivity
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.google.gson.Gson
 import io.mochadwi.mobilenews.R
 import io.mochadwi.mobilenews.articles.ArticlesActivity
-import io.mochadwi.mobilenews.news_source.NewsSourceActivity
-import io.mochadwi.mobilenews.news_source.model.NewsSourceModel
 import io.mochadwi.mobilenews.news_source.model.SourcesItem
 
 /**

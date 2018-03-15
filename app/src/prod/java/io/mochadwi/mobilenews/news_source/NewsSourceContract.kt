@@ -2,7 +2,6 @@ package io.mochadwi.mobilenews.news_source
 
 import io.mochadwi.mobilenews.BasePresenter
 import io.mochadwi.mobilenews.BaseView
-import io.mochadwi.mobilenews.news_source.model.NewsSourceModel
 import io.mochadwi.mobilenews.news_source.model.SourcesItem
 
 /**

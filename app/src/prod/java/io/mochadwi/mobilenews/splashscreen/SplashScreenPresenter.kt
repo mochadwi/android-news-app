@@ -3,10 +3,6 @@ package io.mochadwi.mobilenews.splashscreen
 import io.mochadwi.mobilenews.BuildConfig
 import io.mochadwi.mobilenews.network.RESTClient
 import io.mochadwi.mobilenews.network.RESTGenerator
-import io.mochadwi.mobilenews.news_source.model.NewsSourceModel
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 
 /**

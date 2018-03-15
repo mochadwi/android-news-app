@@ -2,10 +2,9 @@ package io.mochadwi.mobilenews.articles
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.MenuItem
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import android.support.v7.widget.Toolbar
-import android.view.MenuItem
 import butterknife.BindView
 import butterknife.ButterKnife
 import com.google.gson.Gson

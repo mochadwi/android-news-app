@@ -6,7 +6,6 @@ import io.mochadwi.mobilenews.network.RESTGenerator
 import io.mochadwi.mobilenews.news_source.model.NewsSourceModel
 import io.mochadwi.mobilenews.news_source.model.SourcesItem
 import io.realm.Realm
-import io.realm.RealmResults
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

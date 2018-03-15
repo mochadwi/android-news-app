@@ -1,8 +1,6 @@
 package io.mochadwi.mobilenews.articles
 
 import android.support.v7.widget.SearchView
-import android.util.Log
-import android.widget.Toast
 import io.mochadwi.mobilenews.BuildConfig
 import io.mochadwi.mobilenews.articles.adapter.ArticlesAdapter
 import io.mochadwi.mobilenews.articles.model.ArticlesModel
@@ -10,7 +8,6 @@ import io.mochadwi.mobilenews.network.RESTClient
 import io.mochadwi.mobilenews.network.RESTGenerator
 import io.mochadwi.mobilenews.util.RxSearch
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.internal.operators.observable.ObservableReplay.observeOn
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
