@@ -1,0 +1,84 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 26
+    defaultConfig {
+        applicationId "io.mochadwi.mobilenews"
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "APIKEY", "\"e3b3c77a93224a3cb38e1c87cc6aad55\""
+        buildConfigField "int", "LIMIT", "100"
+        buildConfigField "String", "BASEURL", "\"https://newsapi.org/v2/\""
+        buildConfigField "int", "CACHETIME", "432000" // 5days
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+kapt {
+    javacOptions {
+        // Increase the max count of errors from annotation processors.
+        // Default is 100.
+        option("-Xmaxerrs", 500)
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    kaptAndroidTest(testLibraries.espressoCore, {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    kaptTest testLibraries.junit
+    kaptTest testLibraries.mockito
+
+    //support
+    implementation supportDependencies.appCompat
+    implementation supportDependencies.support
+    implementation supportDependencies.design
+    implementation supportDependencies.recyclerView
+    implementation supportDependencies.cardView
+    implementation supportDependencies.constraintLayout
+
+    //networking
+    implementation libraries.okhttp
+    implementation libraries.okhttpLogging
+    implementation libraries.retrofit
+    implementation libraries.retrofitGson
+    implementation libraries.retrofitRx
+    implementation libraries.retrofitScalar
+    implementation libraries.glassfishJavaxAnnotation
+
+    //imageLoader
+    implementation libraries.glide
+
+    //binding
+    implementation libraries.butterKnife
+    kapt libraries.butterKnifeAnnotation
+
+    //Reactive
+    implementation libraries.rxAndroid
+    implementation libraries.rxJava
+
+    //util
+    implementation libraries.readMore
+    compile libraries.relativeTime
+    implementation libraries.jodaTime
+    implementation libraries.kodaTime
+}
