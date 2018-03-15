@@ -1,7 +1,9 @@
 package io.mochadwi.mobilenews.network
 
+import io.mochadwi.mobilenews.BuildConfig
 import okhttp3.OkHttpClient
 import java.security.cert.CertificateException
+import java.util.concurrent.TimeUnit
 import javax.net.ssl.SSLContext
 import javax.net.ssl.TrustManager
 import javax.net.ssl.X509TrustManager
@@ -38,7 +40,17 @@ class UnsafeOkhttpClient {
                     builder.sslSocketFactory(sslSocketFactory)
                     builder.hostnameVerifier { hostname, session -> true }
 
-                    return builder.build()
+                    val interceptor = AuthenticationInterceptor(BuildConfig.APIKEY) // add authentication here
+                    if (!builder.interceptors().contains(interceptor)) {
+                        builder.addInterceptor(interceptor)
+                    }
+
+                    return builder
+                            .readTimeout(60, TimeUnit.SECONDS)
+                            .connectTimeout(60, TimeUnit.SECONDS)
+                            .writeTimeout(60, TimeUnit.SECONDS)
+                            .addInterceptor(RESTGenerator.logging)
+                            .build()
                 } catch (e: Exception) {
                     throw RuntimeException(e)
                 }

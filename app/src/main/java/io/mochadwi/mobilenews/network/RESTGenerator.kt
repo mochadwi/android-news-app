@@ -15,7 +15,7 @@ import java.util.concurrent.TimeUnit
 class RESTGenerator {
 
     companion object {
-        private val logging = HttpLoggingInterceptor()
+        val logging = HttpLoggingInterceptor()
                 .setLevel(HttpLoggingInterceptor.Level.BODY)
 
         fun getRetrofitClient(): Retrofit {
@@ -27,13 +27,6 @@ class RESTGenerator {
         }
 
         private fun buildClient(url: String): Retrofit {
-            val okHttpClient = OkHttpClient.Builder()
-                    .readTimeout(60, TimeUnit.SECONDS)
-                    .connectTimeout(60, TimeUnit.SECONDS)
-                    .writeTimeout(60, TimeUnit.SECONDS)
-
-
-            okHttpClient.addInterceptor(logging)
 
             return Retrofit.Builder()
                     .addConverterFactory(ScalarsConverterFactory.create())
@@ -42,6 +35,11 @@ class RESTGenerator {
                     .baseUrl(url)
                     .client(UnsafeOkhttpClient.unsafeOkHttpClient)
                     .build()
+        }
+
+        fun <S> createService(url: String, serviceClass: Class<S>): S {
+
+            return buildClient(url).create(serviceClass)
         }
 
     }

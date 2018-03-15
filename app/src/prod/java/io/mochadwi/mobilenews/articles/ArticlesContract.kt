@@ -15,7 +15,7 @@ interface ArticlesContract {
     }
 
     interface Presenter : BasePresenter {
-        fun getArticles(sources: String, apiKey: String)
+        fun getArticles(sources: String)
         fun searchArticles(sv: SearchView, adapter: ArticlesAdapter)
     }
 }

@@ -3,6 +3,7 @@ package io.mochadwi.mobilenews.articles
 import android.support.v7.widget.SearchView
 import android.util.Log
 import android.widget.Toast
+import io.mochadwi.mobilenews.BuildConfig
 import io.mochadwi.mobilenews.articles.adapter.ArticlesAdapter
 import io.mochadwi.mobilenews.articles.model.ArticlesModel
 import io.mochadwi.mobilenews.network.RESTClient
@@ -20,18 +21,17 @@ import java.util.concurrent.TimeUnit
  * Created by mochadwi on 3/13/18.
  */
 class ArticlesPresenter(private val mView: ArticlesContract.View) : ArticlesContract.Presenter {
-    private val mRest = RESTGenerator.getRetrofitClient()
+    private val mRest = RESTGenerator.createService(BuildConfig.BASEURL, RESTClient::class.java)
 
     override fun start() {
         mView.setPresenter(this)
     }
 
-    override fun getArticles(sources: String, apiKey: String) {
+    override fun getArticles(sources: String) {
         mView.showProgress()
 
         mRest
-                .create(RESTClient::class.java)
-                .getArticles(sources, apiKey)
+                .getArticles(sources)
                 .enqueue(object : Callback<ArticlesModel> {
                     override fun onResponse(call: Call<ArticlesModel>, response: Response<ArticlesModel>) {
                         mView.hideProgress()

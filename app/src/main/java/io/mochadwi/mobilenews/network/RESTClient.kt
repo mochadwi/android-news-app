@@ -12,9 +12,8 @@ import retrofit2.http.Query
 interface RESTClient {
 
     @GET("sources")
-    fun getRecommendedSources(@Query("apiKey") action: String): Call<NewsSourceModel>
+    fun getRecommendedSources(): Call<NewsSourceModel>
 
     @GET("top-headlines")
-    fun getArticles(@Query("sources") sources: String,
-                    @Query("apiKey") action: String): Call<ArticlesModel>
+    fun getArticles(@Query("sources") sources: String): Call<ArticlesModel>
 }

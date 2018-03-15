@@ -92,7 +92,7 @@ class ArticlesFragment : Fragment(), ArticlesContract.View {
         super.onActivityCreated(savedInstanceState)
 
         val item = Gson().fromJson<SourcesItem>(mParam1, SourcesItem::class.java)
-        mPresenter!!.getArticles(item!!.id!!, BuildConfig.APIKEY)
+        mPresenter!!.getArticles(item!!.id!!)
     }
 
     override fun setRecyclerView(data: ArticlesModel) {
