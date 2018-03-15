@@ -1,5 +1,6 @@
 package io.mochadwi.mobilenews.news_source.adapter
 
+import android.support.v7.widget.CardView
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.TextView
@@ -12,12 +13,14 @@ import io.mochadwi.mobilenews.R
  */
 class NewsSourceViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
+    @BindView(R.id.cv_item)
+    lateinit var mCvItem: CardView
     @BindView(R.id.txt_title)
-    var mTxtTitle: TextView? = null
+    lateinit var mTxtTitle: TextView
     @BindView(R.id.txt_supporting)
-    var mTxtTitleSupport: TextView? = null
+    lateinit var mTxtTitleSupport: TextView
     @BindView(R.id.txt_source)
-    var mTxtSource: TextView? = null
+    lateinit var mTxtSource: TextView
 
     init {
         ButterKnife.bind(this, itemView)

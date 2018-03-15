@@ -3,7 +3,7 @@ package io.mochadwi.mobilenews.news_source
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import io.mochadwi.mobilenews.R
-import io.mochadwi.mobilenews.util.ActivityHelper
+import io.mochadwi.mobilenews.util.PublicMethods
 
 /**
  * Created by mochadwi on 3/13/18.
@@ -16,13 +16,15 @@ class NewsSourceActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_news_source)
 
+        supportActionBar?.title = getString(R.string.message_dashboard)
+
         var view: NewsSourceFragment? = supportFragmentManager
-                .findFragmentById(R.id.fragment_layout) as NewsSourceFragment
+                .findFragmentById(R.id.fragment_layout) as? NewsSourceFragment
 
         if (view == null) {
             view = NewsSourceFragment.newInstance()
 
-            ActivityHelper.addFragmentToActivity(supportFragmentManager,
+            PublicMethods.addFragmentToActivity(supportFragmentManager,
                     view, R.id.fragment_layout)
         }
 

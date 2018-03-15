@@ -7,10 +7,9 @@ import javax.net.ssl.TrustManager
 import javax.net.ssl.X509TrustManager
 
 /**
- * Created by mochadwi on 3/13/18.
+ * Created by mochadwi on 3/14/18.
  */
-
-class UnsafeOkHttpClient {
+class UnsafeOkhttpClient {
     companion object {
         // Create a trust manager that does not validate certificate chains
         // Install the all-trusting trust manager

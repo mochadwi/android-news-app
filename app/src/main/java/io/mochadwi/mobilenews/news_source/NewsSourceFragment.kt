@@ -29,8 +29,8 @@ class NewsSourceFragment : Fragment(), NewsSourceContract.View {
     private var mAdapter: NewsSourceAdapter? = null
 
     // UI
-    @BindView(R.id.rv_items) internal var mRvItems: RecyclerView? = null
-    @BindView(R.id.txt_empty_items) internal var mTxtItems: TextView? = null
+    @BindView(R.id.rv_items) internal lateinit var mRvItems: RecyclerView
+    @BindView(R.id.txt_empty_items) internal lateinit var mTxtItems: TextView
 
     private var progress: ProgressDialog? = null
 
@@ -63,12 +63,12 @@ class NewsSourceFragment : Fragment(), NewsSourceContract.View {
 
     override fun setRecyclerView(data: NewsSourceModel) {
 
-        mTxtItems!!.visibility = View.GONE
-        mRvItems!!.visibility = View.VISIBLE
+        mTxtItems.visibility = View.GONE
+        mRvItems.visibility = View.VISIBLE
 
-        mRvItems!!.layoutManager = GridLayoutManager(context, 2)
+        mRvItems.layoutManager = GridLayoutManager(context, 2)
         mAdapter = NewsSourceAdapter(context, data)
-        mRvItems!!.adapter = mAdapter
+        mRvItems.adapter = mAdapter
     }
 
     override fun showToast(message: String) {

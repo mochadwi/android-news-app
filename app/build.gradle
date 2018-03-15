@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'kotlin-kapt'
+
 android {
     compileSdkVersion 26
     defaultConfig {
@@ -27,15 +29,24 @@ android {
     }
 }
 
+kapt {
+    javacOptions {
+        // Increase the max count of errors from annotation processors.
+        // Default is 100.
+        option("-Xmaxerrs", 500)
+    }
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 
-    androidTestImplementation(testLibraries.espressoCore, {
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    kaptAndroidTest(testLibraries.espressoCore, {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    testImplementation testLibraries.junit
-    testImplementation testLibraries.mockito
+    kaptTest testLibraries.junit
+    kaptTest testLibraries.mockito
 
     //support
     implementation supportDependencies.appCompat
@@ -59,7 +70,7 @@ dependencies {
 
     //binding
     implementation libraries.butterKnife
-    annotationProcessor libraries.butterKnifeAnnotation
+    kapt libraries.butterKnifeAnnotation
 
     //Reactive
     implementation libraries.rxAndroid
@@ -67,4 +78,7 @@ dependencies {
 
     //util
     implementation libraries.readMore
+    compile libraries.relativeTime
+    implementation libraries.jodaTime
+    implementation libraries.kodaTime
 }

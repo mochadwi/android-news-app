@@ -12,6 +12,9 @@ ext {
     mockitoVersion = '2.+'
     butterKnifeVersion = '8.8.1'
     readMoreVersion = '2.1.0'
+    relativeTimeVersion = '1.3.4'
+    jodaTimeVersion = '2.9.9'
+    kodaTimeVersion = '1.2.1'
 
     supportDependencies = [
             appCompat       : "com.android.support:appcompat-v7:${supportLibraryVersion}",
@@ -38,7 +41,10 @@ ext {
             daggerCompiler          : "com.google.dagger:dagger-compiler:${daggerVersion}",
             javaxAnnotation         : "javax.annotation:jsr250-api:1.0",
             glassfishJavaxAnnotation: "org.glassfish:javax.annotation:10.0-b28",
-            readMore                : "com.borjabravo:readmoretextview:${readMoreVersion}"
+            readMore                : "com.borjabravo:readmoretextview:${readMoreVersion}",
+            relativeTime            : "com.github.curioustechizen.android-ago:library:${relativeTimeVersion}",
+            jodaTime                : "joda-time:joda-time:${jodaTimeVersion}",
+            kodaTime                : "com.github.debop:koda-time:${kodaTimeVersion}"
     ]
 
     testLibraries = [
