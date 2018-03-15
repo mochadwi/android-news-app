@@ -1,8 +1,8 @@
 package io.mochadwi.mobilenews.dev.news_source.model
 
 import com.google.gson.Gson
-import javax.annotation.Generated
 import com.google.gson.annotations.SerializedName
+import javax.annotation.Generated
 
 @Generated("com.robohorse.robopojogenerator")
 data class NewsSourceModel(

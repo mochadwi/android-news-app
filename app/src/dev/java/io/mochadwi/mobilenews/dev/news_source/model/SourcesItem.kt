@@ -1,36 +1,57 @@
 package io.mochadwi.mobilenews.dev.news_source.model
 
 import com.google.gson.Gson
-import javax.annotation.Generated
 import com.google.gson.annotations.SerializedName
+import io.mochadwi.mobilenews.util.CloneableRealmObject
+import io.realm.RealmObject
+import io.realm.annotations.PrimaryKey
+import io.realm.annotations.RealmClass
+import javax.annotation.Generated
 
 @Generated("com.robohorse.robopojogenerator")
-data class SourcesItem(
+@RealmClass
+open class SourcesItem(
 
 	@field:SerializedName("country")
-	val country: String? = null,
+	var country: String? = null,
 
 	@field:SerializedName("name")
-	val name: String? = null,
+	var name: String? = null,
 
 	@field:SerializedName("description")
-	val description: String? = null,
+	var description: String? = null,
 
 	@field:SerializedName("language")
-	val language: String? = null,
+	var language: String? = null,
 
+	@PrimaryKey
 	@field:SerializedName("id")
-	val id: String? = null,
+	var id: String? = null,
 
 	@field:SerializedName("category")
-	val category: String? = null,
+	var category: String? = null,
 
 	@field:SerializedName("url")
-	val url: String? = null
+	var url: String? = null
 
+//	@field:SerializedName("timestamps")
+//	var timestamps: Int = 0
 
-) {
+) : RealmObject(), CloneableRealmObject<SourcesItem> {
 	override fun toString(): String {
-		return Gson().toJson(this)
+		return Gson().toJson(this.cloneRealmObject())
+	}
+
+	override fun cloneRealmObject(): SourcesItem {
+		val clone = SourcesItem()
+		clone.id = this.id
+		clone.name = this.name
+		clone.country = this.country
+		clone.description = this.description
+		clone.language = this.language
+		clone.category = this.category
+		clone.url = this.url
+//		clone.timestamps = this.timestamps
+		return clone
 	}
 }

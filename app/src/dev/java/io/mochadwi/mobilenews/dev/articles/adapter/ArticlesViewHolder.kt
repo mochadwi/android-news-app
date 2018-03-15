@@ -1,4 +1,4 @@
-package io.mochadwi.mobilenews.dev.articles.adapter
+package io.mochadwi.mobilenews.articles.adapter
 
 import android.support.v7.widget.CardView
 import android.support.v7.widget.RecyclerView

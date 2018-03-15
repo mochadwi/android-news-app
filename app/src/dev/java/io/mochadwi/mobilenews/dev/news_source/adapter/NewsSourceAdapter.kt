@@ -2,27 +2,26 @@ package io.mochadwi.mobilenews.dev.news_source.adapter
 
 import android.content.Context
 import android.content.Intent
-import android.support.v4.content.ContextCompat.startActivity
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.google.gson.Gson
 import io.mochadwi.mobilenews.R
 import io.mochadwi.mobilenews.dev.articles.ArticlesActivity
-import io.mochadwi.mobilenews.dev.news_source.NewsSourceActivity
-import io.mochadwi.mobilenews.dev.news_source.model.NewsSourceModel
+import io.mochadwi.mobilenews.dev.news_source.model.SourcesItem
 
 /**
  * Created by mochadwi on 3/13/18.
  */
 class NewsSourceAdapter : RecyclerView.Adapter<NewsSourceViewHolder> {
 
-    private val mNews: NewsSourceModel
+    private var mNews: ArrayList<SourcesItem?>? = null
     private val mCtx: Context
+    private var count: Int = 0
 
-    constructor(c: Context, dataIn: NewsSourceModel) {
+    constructor(c: Context, dataIn: ArrayList<SourcesItem?>?) {
         this.mCtx = c
         mNews = dataIn
+        count = mNews!!.size
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsSourceViewHolder {
@@ -33,7 +32,7 @@ class NewsSourceAdapter : RecyclerView.Adapter<NewsSourceViewHolder> {
 
     override fun onBindViewHolder(holder: NewsSourceViewHolder, position: Int) {
 
-        val item = mNews.sources!![position]
+        val item = mNews!![position]
 
         holder.mCvItem.setOnClickListener {
             val i = Intent(mCtx, ArticlesActivity::class.java)
@@ -46,6 +45,6 @@ class NewsSourceAdapter : RecyclerView.Adapter<NewsSourceViewHolder> {
     }
 
     override fun getItemCount(): Int {
-        return mNews.sources!!.size
+        return count
     }
 }

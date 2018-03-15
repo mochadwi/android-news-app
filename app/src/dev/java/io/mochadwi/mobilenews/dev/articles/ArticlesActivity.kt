@@ -2,12 +2,10 @@ package io.mochadwi.mobilenews.dev.articles
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.view.Menu
 import android.view.MenuItem
 import io.mochadwi.mobilenews.R
+import io.mochadwi.mobilenews.articles.ArticlesPresenter
 import io.mochadwi.mobilenews.util.PublicMethods
-import android.support.v4.view.MenuItemCompat
-import android.support.v7.widget.SearchView
 
 
 /**

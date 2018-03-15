@@ -9,6 +9,7 @@ import android.widget.Filter
 import android.widget.Filterable
 import com.bumptech.glide.Glide
 import io.mochadwi.mobilenews.R
+import io.mochadwi.mobilenews.articles.adapter.ArticlesViewHolder
 import io.mochadwi.mobilenews.dev.articles.ArticlesWebViewActivity
 import io.mochadwi.mobilenews.dev.articles.model.ArticlesItem
 import io.mochadwi.mobilenews.dev.articles.model.ArticlesModel
