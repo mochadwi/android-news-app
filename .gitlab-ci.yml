@@ -1,0 +1,64 @@
+image: lakoo/android-ndk
+
+stages:
+- b_dev
+- b_prod
+- b_rel
+
+before_script:
+- export GRADLE_USER_HOME=$(pwd)/.gradle
+- export DEV="dev"
+- export PROD="prod"
+- export REL="rel"
+- export PACK="io.mochadwi.mobilenews"
+- chmod +x ./gradlew
+
+cache:
+  key: ${CI_PROJECT_ID}
+  paths:
+  - .gradle/
+
+build_dev:
+  stage: b_dev
+  only: 
+  - develop
+  script:
+  - ./gradlew --stacktrace clean assembleDevelopmentDebug
+  - cd app/build/outputs/apk/$DEV/debug
+  - cp $PACK-$DEV-debug.apk $CI_PROJECT_DIR/$CI_BUILD_REF-dev.apk
+  - ls -al $CI_PROJECT_DIR
+  artifacts:
+    paths:
+    - ./$CI_BUILD_REF-dev.apk
+    expire_in: 30 day
+
+build_prod:
+  stage: b_prod
+  only: 
+  - master
+  - prod
+  script:
+  - ./gradlew --stacktrace clean assembleProductionDebug
+  - cd app/build/outputs/apk/$PROD/debug
+  - cp $PACK-$PROD-debug.apk $CI_PROJECT_DIR/$CI_BUILD_REF-prod.apk
+  - ls -al $CI_PROJECT_DIR
+  artifacts:
+    paths:
+    - ./$CI_BUILD_REF-prod.apk
+    expire_in: 30 day
+
+# Sign APK & Upload to Play Store
+# TODO: Setup Google Play Store, Permission to auto upload to Play Store to the Alpha channel
+build_rel:
+  stage: b_rel
+  only: 
+  - master
+  script:
+  - ./gradlew --stacktrace clean publishProductionRelease
+  - cd app/build/outputs/apk/$REL/rel
+  - cp $PACK-$REL-rel.apk $CI_PROJECT_DIR/$CI_BUILD_REF-rel.apk
+  - ls -al $CI_PROJECT_DIR
+  artifacts:
+    paths:
+    - ./$CI_BUILD_REF-rel.apk
+    expire_in: 30 day

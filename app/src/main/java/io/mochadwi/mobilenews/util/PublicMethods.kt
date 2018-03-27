@@ -2,11 +2,7 @@ package io.mochadwi.mobilenews.util;
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
-import android.support.v4.app.FragmentTransaction
-import com.github.debop.javatimes.NowLocalDate
-import org.joda.time.DateTime
 import org.joda.time.format.ISODateTimeFormat
-import java.time.LocalDateTime
 import java.util.*
 
 /**
