@@ -1,3 +1,6 @@
+[submodule "common"]
+	path = common
+	url = git@github.com:mochadwi/android-news-common.git
 [submodule "news_source"]
 	path = news_source
-	url = git@github.com:mochadwi/android-news-app.git
+	url = git@github.com:mochadwi/android-news-source.git
