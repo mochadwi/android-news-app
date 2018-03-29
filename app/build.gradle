@@ -6,9 +6,9 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
-apply plugin: 'realm-android'
-
 apply plugin: 'com.github.triplet.play'
+
+apply plugin: 'realm-android'
 
 kapt {
     javacOptions {
@@ -19,6 +19,9 @@ kapt {
 }
 
 android {
+    dexOptions {
+        incremental false
+    }
 
     signingConfigs {
         debugConfig {
@@ -80,18 +83,18 @@ android {
     }
 }
 
+realm {
+    syncEnabled = true
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+//    implementation project(':auth')
+    implementation project(':domain')
+    implementation project(':news_source')
+    implementation project(':articles')
+
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
-
-    kaptAndroidTest(testLibraries.espressoCore, {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    testImplementation testLibraries.junit
-    testImplementation testLibraries.mockito
-    testImplementation testLibraries.mockitoKotlin
 
     //support
     implementation supportDependencies.appCompat
@@ -122,9 +125,20 @@ dependencies {
     implementation libraries.rxAndroid
     implementation libraries.rxJava
 
+//    implementation realmDep.lib
+//    kapt realmDep.annot
+//    kapt realmDep.proc
+
     //util
+    implementation libraries.anko
     implementation libraries.readMore
     compile libraries.relativeTime
     implementation libraries.jodaTime
-    implementation libraries.kodaTime
+
+    kaptAndroidTest(testLibraries.espressoCore, {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    testImplementation testLibraries.junit
+    testImplementation testLibraries.mockito
+    testImplementation testLibraries.mockitoKotlin
 }

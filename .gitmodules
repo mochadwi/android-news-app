@@ -1,0 +1,3 @@
+[submodule "news_source"]
+	path = news_source
+	url = git@github.com:mochadwi/android-news-app.git
