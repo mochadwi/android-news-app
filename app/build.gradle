@@ -91,8 +91,8 @@ realm {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':domain')
-//    implementation project(':news_source')
-//    implementation project(':articles')
+    implementation project(':news_source')
+    implementation project(':articles')
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 
