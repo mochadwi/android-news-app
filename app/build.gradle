@@ -19,9 +19,6 @@ kapt {
 }
 
 android {
-    dexOptions {
-        incremental false
-    }
 
     signingConfigs {
         debugConfig {
@@ -83,6 +80,10 @@ android {
     }
 }
 
+androidExtensions {
+    experimental = true
+}
+
 realm {
     syncEnabled = true
 }
@@ -90,9 +91,9 @@ realm {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 //    implementation project(':auth')
-    implementation project(':domain')
-    implementation project(':news_source')
-    implementation project(':articles')
+//    implementation project(':domain')
+//    implementation project(':news_source')
+//    implementation project(':articles')
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 
@@ -124,10 +125,6 @@ dependencies {
     //Reactive
     implementation libraries.rxAndroid
     implementation libraries.rxJava
-
-//    implementation realmDep.lib
-//    kapt realmDep.annot
-//    kapt realmDep.proc
 
     //util
     implementation libraries.anko
