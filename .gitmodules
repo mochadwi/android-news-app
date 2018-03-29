@@ -4,3 +4,6 @@
 [submodule "news_source"]
 	path = news_source
 	url = git@github.com:mochadwi/android-news-source.git
+[submodule "domain"]
+	path = domain
+	url = git@github.com:mochadwi/android-news-domain.git 

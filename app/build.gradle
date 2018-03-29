@@ -90,8 +90,7 @@ realm {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-//    implementation project(':auth')
-//    implementation project(':domain')
+    implementation project(':domain')
 //    implementation project(':news_source')
 //    implementation project(':articles')
 
