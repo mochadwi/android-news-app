@@ -16,6 +16,8 @@ ext {
     jodaTimeVersion = '2.9.9'
     kodaTimeVersion = '1.2.1'
     multiDexVersion = '1.0.1'
+    ankoVersion = '0.10.4'
+    realmVersion = '5.0.0'
 
     supportDependencies = [
             appCompat       : "com.android.support:appcompat-v7:${supportLibraryVersion}",
@@ -25,6 +27,12 @@ ext {
             cardView        : "com.android.support:cardview-v7:${supportLibraryVersion}",
             constraintLayout: "com.android.support.constraint:constraint-layout:${constraintLayoutVersion}",
             multiDex        : "com.android.support:multidex:${multiDexVersion}"
+    ]
+
+    realmDep = [
+            lib  : "io.realm:realm-android-library:${realmVersion}@aar",
+            annot: "io.realm:realm-annotations:${realmVersion}",
+            proc : "io.realm:realm-annotations-processor:${realmVersion}",
     ]
 
     libraries = [
@@ -46,7 +54,8 @@ ext {
             readMore                : "com.borjabravo:readmoretextview:${readMoreVersion}",
             relativeTime            : "com.github.curioustechizen.android-ago:library:${relativeTimeVersion}",
             jodaTime                : "joda-time:joda-time:${jodaTimeVersion}",
-            kodaTime                : "com.github.debop:koda-time:${kodaTimeVersion}"
+            kodaTime                : "com.github.debop:koda-time:${kodaTimeVersion}",
+            anko                    : "org.jetbrains.anko:anko:${ankoVersion}"
     ]
 
     testLibraries = [
