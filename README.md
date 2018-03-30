@@ -2,13 +2,22 @@
 News Mobile Apps (Kotlin + MVP + RxJava + Realm + Micro-apps)
 
 ### How to run
-`
-  $: git clone [this-url]
-  $: git submodule update --init --recursive
-  $: git submodule foreach git pull origin master #this repo using multi repo due to micro-apps [my articles](https://medium.com/@mochadwi/android-modularize-your-projects-d90733a03291)
-  $: chmod +x ./gradlew
-  $: ./gradlew --stacktrace clean assembleProdDebug #default flavour to prod
-`
+```
+$: git clone https://github.com
+$: git submodule update --init --recursive
+$: git submodule foreach git pull origin master
+$: chmod +x ./gradlew
+$: ./gradlew --stacktrace clean assembleProdDebug #**default flavour to prod**
+```
+### FAQ
+
+- Why sudmodule?
+
+ANS: **multi repo due to micro-apps architecture [my articles](https://medium.com/@mochadwi/android-modularize-your-projects-d90733a03291)**
+- Why product flavours?
+
+ANS: For ease of use to change the environment without affecting production environment (separate build config, static files, etc)
+
 
 ### What this repo contains
 
