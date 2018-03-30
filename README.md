@@ -1,5 +1,13 @@
 # android-news-app
-News Mobile Apps (Kotlin + MVP + RxJava)
+News Mobile Apps (Kotlin + MVP + RxJava + Realm + Micro-apps)
+
+### How to run
+`
+  $: git clone [this-url]
+  $: git submodule foreach git pull #this repo using multi repo due to micro-apps [my articles](https://medium.com/@mochadwi/android-modularize-your-projects-d90733a03291)
+  $: chmod +x ./gradlew
+  $: ./gradlew --stacktrace clean assembleProdDebug #default flavour to prod
+`
 
 ### What this repo contains
 
