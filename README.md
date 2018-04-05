@@ -6,8 +6,6 @@ News Mobile Apps (Kotlin + MVP + RxJava + Realm + Micro-apps)
 $: git clone https://github.com/mochadwi/android-news-app.git
 $: git submodule update --init --recursive
 $: git submodule foreach git pull origin master
-$: chmod +x ./gradlew
-$: ./gradlew --stacktrace clean assembleProdDebug #**default flavour to prod**
 ```
 ### FAQ
 
