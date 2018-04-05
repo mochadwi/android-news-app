@@ -1,12 +1,12 @@
 [submodule "common"]
 	path = common
-	url = git@github.com:mochadwi/android-news-common.git
+	url = https://github.com/mochadwi/android-news-common.git
 [submodule "news_source"]
 	path = news_source
-	url = git@github.com:mochadwi/android-news-source.git
+	url = https://github.com/mochadwi/android-news-source.git
 [submodule "articles"]
 	path = articles
-	url = git@github.com:mochadwi/android-news-articles.git 
+	url = https://github.com/mochadwi/android-news-articles.git 
 [submodule "domain"]
 	path = domain
-	url = git@github.com:mochadwi/android-news-domain.git 
+	url = https://github.com/mochadwi/android-news-domain.git 
