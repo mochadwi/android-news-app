@@ -93,6 +93,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
 
     implementation project(':domain')
+    implementation project(':data')
     implementation project(':news_source')
     implementation project(':articles')
 

@@ -72,7 +72,7 @@ class NewsSourcePresenter(private val mView: NewsSourceContract.View) : NewsSour
                 } else {
                     mView.hideProgress()
 
-                    mView.showToast("Error get data from database")
+                    mView.showToast("Error get model from database")
                 }
             }
         }

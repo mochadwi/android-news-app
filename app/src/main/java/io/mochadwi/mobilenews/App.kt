@@ -1,7 +1,7 @@
 package io.mochadwi.mobilenews
 
 import android.support.multidex.MultiDexApplication
-import io.mochadwi.mobilenews.domain.data.news_source.modules.SourcesItemModule
+import io.mochadwi.mobilenews.domain.model.news_source.modules.SourcesItemModule
 import io.realm.Realm
 import io.realm.RealmConfiguration
 
