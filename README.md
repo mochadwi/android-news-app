@@ -3,9 +3,9 @@ News Mobile Apps (Kotlin + MVP + RxJava + Realm + Micro-apps)
 
 ### How to run
 ```
-$: git clone https://github.com/mochadwi/android-news-app.git
-$: git submodule update --init --recursive
-$: git submodule foreach git pull origin master
+1. $: git clone https://github.com/mochadwi/android-news-app.git
+2. $: git submodule update --init --recursive
+3. $: git submodule foreach git pull origin master
 ```
 ### FAQ
 
